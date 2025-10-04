@@ -17,6 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.http import HttpResponse
+from debug_toolbar.toolbar import debug_toolbar_urls
 
 def index(request):
     return HttpResponse ("Hi World!")
@@ -28,8 +29,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index),
     path('about/', about),
-    path('playground/', include('playground.urls'))
-]
+    path('playground/', include('playground.urls')),
+
+] + debug_toolbar_urls()
 
 
 
